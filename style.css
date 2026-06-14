@@ -1,0 +1,403 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  ::-webkit-scrollbar{
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track{
+    background: none;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: rgb(0, 30, 255);
+    border-radius: 5px 0px 0px 5px;
+  }
+body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f8;
+  color: #333;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.dark-mode{
+  background: #101010;
+  color: white;
+  .card{
+    color: black;
+  }
+  .sidebar{
+    border-right: 1px solid white;
+  }
+  .task-list div{
+    color: rgb(0, 0, 0);
+  }
+}
+
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #111;
+  color: #fff;
+  padding: 1.5rem;
+}
+
+.sidebar-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-item i {
+  width: 18px;
+  text-align: center;
+}
+
+.nav-item:hover {
+  background: #2a2a2a;
+}
+
+.nav-item.active {
+  background: #333;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+/* Main */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Sections */
+.section {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.section.active-section {
+  display: block;
+}
+
+/* Cards */
+.card-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fdfdfd;
+  padding: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.card:hover{
+  translate: 0 -6px;
+  background: white;
+}
+
+.card i {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tasks */
+.task-input {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 0.75rem;
+}
+
+.task-input button {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  background-color: rgb(3, 145, 3);
+  color: white;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.task-input button:hover{
+  background-color: green;
+}
+.fill-state{
+  display: none;
+}
+
+/* Notes */
+.new-note {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  resize: none;
+  border: 1px solid rgb(46, 45, 45);
+  border-radius: 6px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 10px rgb(222, 222, 222);
+}
+.notes-list{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  row-gap: 20px;
+  column-gap: 30px;
+}
+.note{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(224, 220, 220);
+  padding: 10px;
+  border-radius: 10px;
+}
+.action-btns{
+  display: flex;
+  margin-top: 25px;
+  gap: 15px;
+}
+.action-btns button{
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.action-btns button:nth-child(1){
+  background-color: rgb(11, 211, 57);
+  &:hover{
+    background-color: rgb(12, 240, 66);
+  }
+}
+.action-btns button:nth-child(2){
+  background-color: rgb(21, 0, 255);
+  &:hover{
+    background-color: rgb(70, 56, 226);
+  }
+}
+.action-btns button:nth-child(3){
+  background-color: rgb(185, 14, 14);
+  &:hover{
+    background-color: rgb(230, 30, 30);
+  }
+}
+.note textarea{
+  resize: none;
+  height: 140px;
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background: none;
+  background-color: white;
+  border-radius: 10px;
+  line-height: 23px;
+  font-family: plus jakarta sans;
+  transition: all 0.2s ease-in-out;
+  padding-bottom: 10px;
+}
+.note textarea:focus{
+  outline: none;
+}
+.active-note-textarea{
+  outline: 2px solid black;
+}
+.add-note-btn{
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: rgb(19, 199, 19);
+  &:hover{
+    background-color: rgb(21, 233, 21);
+  }
+}
+
+/* Settings */
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.toggle-btn{
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.toggle-btn:hover{
+  background-color: rgb(50, 50, 50);
+}
+
+.danger-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.danger-btn:hover{
+  background-color: #e06670;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert{
+  position: fixed;
+  z-index: 30;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgb(57, 173, 31);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  color: white;
+  max-width: 190.573px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  translate: 40px 0px;
+  opacity: 0;
+}
+.alert-active{
+  translate: 0 0;
+  opacity: 1;
+}
+.task-list{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.task-list div{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  padding: 20px 30px;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.delete-task-btn{
+  border: none;
+  background: none;
+  padding: 10px;
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.delete-task-btn:hover{
+  background-color: rgb(134, 5, 5);
+}
+.confirm-clear-tasks{
+  position: absolute;
+  top: 20px;
+  place-self: center;
+  background-color: rgb(15, 33, 125);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 30;
+  opacity: 0;
+  translate: 0 -140px;
+  transition: all 0.3s ease-in-out;
+
+}
+.irreversible-action{
+  display: flex;
+  align-items: center;
+  color: rgb(201, 255, 7);
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+.irreversible-action i{
+  color: rgb(238, 255, 0);
+}
+.confirm-clear-tasks button{
+  background: none;
+  border: none;
+  background-color: green;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.confirm-clear-tasks button[data-action = "yes"]{
+  background-color: red;
+}
+.confirm-clear-tasks-active{
+  opacity: 1;
+  translate:  0 0;
+}
+.active-overlay{
+  opacity: 1;
+}

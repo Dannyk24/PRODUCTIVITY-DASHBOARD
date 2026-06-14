@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard App</title>
+
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-layer-group"></i> MyDashboard</h2>
+    </div>
+
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item" data-section="home">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </li>
+        <li class="nav-item" data-section="tasks">
+          <i class="fas fa-check-circle"></i>
+          <span>Tasks</span>
+        </li>
+        <li class="nav-item" data-section="notes">
+          <i class="fas fa-sticky-note"></i>
+          <span>Notes</span>
+        </li>
+        <li class="nav-item" data-section="settings">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Home -->
+    <section class="section active-section" data-section="home">
+      <h1><i class="fas fa-hand"></i> Welcome</h1>
+      <p>
+        Manage tasks, write notes, and customize your dashboard.
+      </p>
+
+      <div class="card-grid">
+        <div class="card" data-section="tasks">
+          <i class="fas fa-list-check"></i>
+          <h3>Task Management</h3>
+          <p>Organize your daily tasks efficiently.</p>
+        </div>
+        <div class="card" data-section="notes">
+          <i class="fas fa-note-sticky"></i>
+          <h3>Quick Notes</h3>
+          <p>Capture ideas and reminders instantly.</p>
+        </div>
+        <div class="card" data-section="settings">
+          <i class="fas fa-sliders-h"></i>
+          <h3>Custom Settings</h3>
+          <p>Personalize your dashboard experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tasks -->
+    <section class="section" data-section="tasks">
+      <h1><i class="fas fa-check-circle"></i> Tasks</h1>
+
+      <div class="task-input">
+        <input type="text" placeholder="Enter a new task..." class="task-name"/>
+        <button class="add-task-btn">
+          <i class="fas fa-plus"></i>
+          Add Task
+        </button>
+      </div>
+
+      <ul class="task-list"></ul>
+      <p class="empty-state">
+        <i class="fas fa-inbox"></i> No tasks yet.
+      </p>
+    </section>
+
+    <!-- Notes -->
+    <section class="section" data-section="notes">
+      <h1><i class="fas fa-sticky-note"></i> Notes</h1>
+      <p>Write quick notes and ideas.</p>
+      <textarea placeholder="Write your notes here..." class="new-note"></textarea>
+      <button class="add-note-btn">Add Note +</button>
+      <div class="notes-list">
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="section" data-section="settings">
+      <h1><i class="fas fa-cog"></i> Settings</h1>
+
+      <div class="setting-item">
+        <span>
+          <i class="fas fa-moon"></i> Dark Mode
+        </span>
+        <button class="toggle-btn">Toggle</button>
+      </div>
+
+      <div class="setting-item danger">
+        <span>
+          <i class="fas fa-trash"></i> Clear All Tasks
+        </span>
+        <button class="danger-btn">Clear</button>
+      </div>
+    </section>
+
+    <div class="alert">Alert Content Hereeeeeeeeeee</div>
+    <div class="confirm-clear-tasks">
+      <p>Are You sure you want to clear all tasks</p>
+      <p class="irreversible-action"> <i class="fas fa-warning"></i>This action is irreversible</p>
+      <div class="button-div">
+          <button data-action="no">Back</button>
+          <button data-action="yes">Yes</button>
+        </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
